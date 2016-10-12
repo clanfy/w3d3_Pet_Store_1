@@ -47,7 +47,7 @@ class Pet
     end
 
     def delete
-        sql = "DELETE FROM pets"
+        sql = "DELETE FROM pets WHERE id = #{id}"
         SqlRunner.run(sql)
     end
 
