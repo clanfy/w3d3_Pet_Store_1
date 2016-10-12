@@ -2,7 +2,7 @@ require_relative('../db/sql_runner')
 
 class PetStore
 
-    attr_reader :id, :name, :address, :type
+    attr_accessor :id, :name, :address, :type
 
     def initialize (options)
         @id     = options['id'].to_i
@@ -33,6 +33,15 @@ class PetStore
         sql = "SELECT * FROM pet_stores WHERE id = #{id} ; "
         pet_store = SqlRunner.run(sql)
         return PetStore.new(pet_store.first())
+    end
+
+    def update
+        sql = "UPDATE pet_stores SET 
+        name = '#{@name}', 
+        address = '#{@address}',
+        type = '#{@type}'
+        WHERE id = #{id} "
+        SqlRunner.run(sql)
     end
 
 end
