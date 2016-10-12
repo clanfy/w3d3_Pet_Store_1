@@ -23,6 +23,11 @@ class PetStore
         return pets.map {|pet| Pet.new(pet)}
     end
 
+    def self.all()
+        sql = "SELECT * FROM pet_stores;"
+        pet_stores = SqlRunner.run(sql)
+        return pet_stores.map { |store| PetStore.new(store) }
+    end
     
 
 end
