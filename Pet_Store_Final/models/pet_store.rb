@@ -29,5 +29,12 @@ class PetStore
         return pet_stores.map { |store| PetStore.new(store) }
     end
     
+    def find(id)
+        sql = "SELECT * FROM pet_stores WHERE id = @id"
+        pet_store = SqlRunner.run(sql)
+        return pet_store
+    end
 
 end
+
+

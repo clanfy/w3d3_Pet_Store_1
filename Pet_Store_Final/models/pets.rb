@@ -25,6 +25,12 @@ class Pet
         return PetStore.new( pet_store ) 
     end
 
+    def self.all()
+        sql = "SELECT * FROM pets;"
+        pets = SqlRunner.run(sql)
+        return pets.map {|pet| Pet.new(pet)}
+    end
+
 
 
 
