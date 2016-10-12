@@ -29,10 +29,10 @@ class PetStore
         return pet_stores.map { |store| PetStore.new(store) }
     end
     
-    def find(id)
-        sql = "SELECT * FROM pet_stores WHERE id = @id"
+    def self.find(id)
+        sql = "SELECT * FROM pet_stores WHERE id = #{id} ; "
         pet_store = SqlRunner.run(sql)
-        return pet_store
+        return PetStore.new(pet_store.first())
     end
 
 end
