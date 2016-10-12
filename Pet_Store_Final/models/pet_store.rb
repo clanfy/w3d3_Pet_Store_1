@@ -18,19 +18,19 @@ class PetStore
     end
 
     def pets
-        sql ="SELECT * FROM pets WHERE pet_store_id = #{@id};"
+        sql ="SELECT * FROM pets WHERE pet_store_id = #{@id}"
         pets = SqlRunner.run(sql)
         return pets.map {|pet| Pet.new(pet)}
     end
 
     def self.all()
-        sql = "SELECT * FROM pet_stores;"
+        sql = "SELECT * FROM pet_stores"
         pet_stores = SqlRunner.run(sql)
         return pet_stores.map { |store| PetStore.new(store) }
     end
     
     def self.find(id)
-        sql = "SELECT * FROM pet_stores WHERE id = #{id} ; "
+        sql = "SELECT * FROM pet_stores WHERE id = #{id} "
         pet_store = SqlRunner.run(sql)
         return PetStore.new(pet_store.first())
     end
@@ -41,6 +41,11 @@ class PetStore
         address = '#{@address}',
         type = '#{@type}'
         WHERE id = #{id} "
+        SqlRunner.run(sql)
+    end
+
+    def delete
+        sql = "DELETE FROM pet_stores"
         SqlRunner.run(sql)
     end
 

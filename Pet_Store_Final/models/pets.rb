@@ -46,5 +46,9 @@ class Pet
         SqlRunner.run(sql)
     end
 
+    def delete
+        sql = "DELETE FROM pets"
+        SqlRunner.run(sql)
+    end
 
 end
